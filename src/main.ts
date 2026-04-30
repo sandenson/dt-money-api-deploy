@@ -11,9 +11,6 @@ async function bootstrap() {
     forbidNonWhitelisted: true,
   }))
 
-  const CSS_URL =
-  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
-
   //Swagger setup
   const config = new DocumentBuilder()
     .setTitle('DT Money API')
@@ -23,9 +20,7 @@ async function bootstrap() {
     .build();
   
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document, {
-    customCssUrl: CSS_URL,
-  });
+  SwaggerModule.setup('api', app, document);
 
   
   // habilitar cors
