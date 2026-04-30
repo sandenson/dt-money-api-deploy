@@ -1,5 +1,5 @@
 import { Body, Controller, HttpStatus, Post, Res } from "@nestjs/common";
-import { CreateTransactionDTO } from "src/dto/create-transaction.dto";
+import { CreateTransactionDTO } from "../dto/create-transaction.dto";
 import { CreateTransactionService } from "../services/create-transaction.service";
 import type { Response } from 'express';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";

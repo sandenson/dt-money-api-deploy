@@ -1,6 +1,6 @@
 import { Body, Controller, HttpStatus, Param, Put, Res } from "@nestjs/common";
 import { UpdateTransactionService } from "../services/update-transaction.service";
-import { UpdateTransactionDTO } from "src/dto/update-transaction.dto";
+import { UpdateTransactionDTO } from "../dto/update-transaction.dto";
 import type { Response } from 'express';
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
 

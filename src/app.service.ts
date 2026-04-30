@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { ITransactionRepository } from './infra/repositories/transaction.repository.abstract';
+import { ITransactionRepository } from './modules/transactions/infra/repositories/transaction.repository.abstract';
 
 @Injectable()
 export class AppService {

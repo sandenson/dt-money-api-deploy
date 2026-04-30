@@ -1,5 +1,5 @@
-import { CreateTransactionDTO } from "src/dto/create-transaction.dto";
-import { UpdateTransactionDTO } from "src/dto/update-transaction.dto";
+import { CreateTransactionDTO } from "../../dto/create-transaction.dto";
+import { UpdateTransactionDTO } from "../../dto/update-transaction.dto";
 
 export abstract class ITransactionRepository {
    abstract create(data: CreateTransactionDTO); 

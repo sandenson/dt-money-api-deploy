@@ -1,5 +1,5 @@
-import { CreateTransactionDTO } from "src/dto/create-transaction.dto";
-import { UpdateTransactionDTO } from "src/dto/update-transaction.dto";
+import { CreateTransactionDTO } from "../../../dto/create-transaction.dto";
+import { UpdateTransactionDTO } from "../../../dto/update-transaction.dto";
 import { ITransactionRepository } from "../transaction.repository.abstract";
 import { PrismaService } from "src/shared/prisma.service";
 import { Injectable, NotFoundException } from "@nestjs/common";

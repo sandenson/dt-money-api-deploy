@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PrismaTransactionRepository } from './infra/repositories/prisma/prisma.transaction.repository';
-import { ITransactionRepository } from './infra/repositories/transaction.repository.abstract';
+import { PrismaTransactionRepository } from './modules/transactions/infra/repositories/prisma/prisma.transaction.repository';
+import { ITransactionRepository } from './modules/transactions/infra/repositories/transaction.repository.abstract';
 import { PrismaService } from './shared/prisma.service';
 import { TransactionsModule } from './modules/transactions/transactions.module';
 

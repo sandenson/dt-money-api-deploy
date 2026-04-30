@@ -1,6 +1,6 @@
 import  { Injectable, NotFoundException } from "@nestjs/common";
-import { UpdateTransactionDTO } from "src/dto/update-transaction.dto";
-import { ITransactionRepository } from "src/infra/repositories/transaction.repository.abstract";
+import { UpdateTransactionDTO } from "../dto/update-transaction.dto";
+import { ITransactionRepository } from "src/modules/transactions/infra/repositories/transaction.repository.abstract";
 
 
 @Injectable()
