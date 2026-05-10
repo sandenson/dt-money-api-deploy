@@ -9,12 +9,24 @@ datasource db {
 }
 
 model Transaction {
-  id  String @id @default(uuid())
-  title String
-  price Float
+  id       String   @id @default(uuid())
+  title    String
+  price    Float
   category String
-  type String
-  data DateTime @default(now()) 
+  type     String
+  data     DateTime @default(now())
 
   @@map("transactions")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  email     String   @unique
+  name      String
+  password  String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
 }
