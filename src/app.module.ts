@@ -9,9 +9,13 @@ import { TransactionsModule } from './modules/transactions/transactions.module';
 @Module({
   imports: [TransactionsModule],
   controllers: [AppController],
-  providers: [AppService, PrismaService, {
-    provide: ITransactionRepository,
-    useClass: PrismaTransactionRepository
-  }],
+  providers: [
+    AppService,
+    PrismaService,
+    {
+      provide: ITransactionRepository,
+      useClass: PrismaTransactionRepository,
+    },
+  ],
 })
 export class AppModule {}
