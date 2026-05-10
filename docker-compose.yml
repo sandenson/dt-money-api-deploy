@@ -1,0 +1,13 @@
+name: dt-money
+services:
+  dt-money-postgres:
+    image: postgres:latest
+    container_name: dt-money-postgres
+    environment:
+      POSTGRES_DB: ${PG_DB_NAME}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+      POSTGRES_USER: ${PG_USER}
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - 5432:${PG_PORT}
