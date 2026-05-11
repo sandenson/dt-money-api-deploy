@@ -1,13 +1,14 @@
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import {
   IsDate,
   IsIn,
+  IsNotEmpty,
   IsNumber,
   IsOptional,
   IsString,
   Min,
 } from 'class-validator';
-import { Type } from 'class-transformer';
-import { ApiPropertyOptional, ApiProperty } from '@nestjs/swagger';
 
 export class CreateTransactionDTO {
   @ApiPropertyOptional({
@@ -20,7 +21,8 @@ export class CreateTransactionDTO {
 
   @ApiProperty({ description: 'Título da Transação', example: 'Salário' })
   @IsString()
-  title: string;
+  @IsNotEmpty()
+  title!: string;
 
   @ApiProperty({
     description: 'Valor da Transação',
@@ -29,7 +31,7 @@ export class CreateTransactionDTO {
   })
   @IsNumber()
   @Min(0.01, { message: 'O preço deve ser um número positivo' })
-  price: number;
+  price!: number;
 
   @ApiProperty({
     description: 'Tipo da Transação',
@@ -37,11 +39,14 @@ export class CreateTransactionDTO {
     enum: ['INCOME', 'OUTCOME'],
   })
   @IsIn(['INCOME', 'OUTCOME'], { message: 'O tipo deve ser INCOME ou OUTCOME' })
-  type: 'INCOME' | 'OUTCOME';
+  @IsString()
+  @IsNotEmpty()
+  type!: 'INCOME' | 'OUTCOME';
 
   @ApiProperty({ description: 'Categoria da Transação', example: 'Trabalho' })
   @IsString()
-  category: string;
+  @IsNotEmpty()
+  category!: string;
 
   @ApiPropertyOptional({
     description: 'Data da Transação',
