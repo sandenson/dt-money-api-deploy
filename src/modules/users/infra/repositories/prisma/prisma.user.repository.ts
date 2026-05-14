@@ -74,11 +74,22 @@ export class PrismaUserRepository implements IUserRepository {
   }
 
   async delete(id: string) {
-    await this.prisma.user.delete({
-      where: {
-        id,
-      },
-    });
+    try {
+      await this.prisma.user.delete({
+        where: {
+          id,
+        },
+      });
+    } catch (error) {
+      if (
+        error instanceof PrismaClientKnownRequestError &&
+        error.code === 'P2025'
+      ) {
+        throw new NotFoundException('User not found');
+      }
+
+      throw error;
+    }
   }
 
   async update(id: string, dto: UpdateUserDTO) {
