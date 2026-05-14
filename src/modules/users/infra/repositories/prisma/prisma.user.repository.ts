@@ -4,6 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client';
+import { hashSync } from 'bcrypt';
 import { User } from 'generated/prisma/client';
 import { UserWhereUniqueInput } from 'generated/prisma/models';
 import { UserNoPwd } from 'src/modules/users/types';
@@ -16,10 +17,13 @@ import { IUserRepository } from '../user.repository.abstract';
 export class PrismaUserRepository implements IUserRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(data: CreateUserDTO): Promise<UserNoPwd> {
+  async create(dto: CreateUserDTO): Promise<UserNoPwd> {
     try {
       return await this.prisma.user.create({
-        data,
+        data: {
+          ...dto,
+          password: hashSync(dto.password, 10),
+        },
       });
     } catch (error) {
       if (
@@ -77,11 +81,16 @@ export class PrismaUserRepository implements IUserRepository {
     });
   }
 
-  async update(id: string, data: UpdateUserDTO) {
+  async update(id: string, dto: UpdateUserDTO) {
     try {
       return await this.prisma.user.update({
         where: { id },
-        data,
+        data: {
+          ...dto,
+          ...(!!dto.password && {
+            password: hashSync(dto.password, 10),
+          }),
+        },
       });
     } catch (error) {
       if (
