@@ -1,9 +1,11 @@
 import { CreateUserService } from './create-user.service';
 import { DeleteUserService } from './delete-user.service';
+import { FindUserByUsernameService } from './find-user-by-username.service';
 import { UpdateUserService } from './update-user.service';
 
 export const userServices = [
   CreateUserService,
+  FindUserByUsernameService,
   UpdateUserService,
   DeleteUserService,
 ];
