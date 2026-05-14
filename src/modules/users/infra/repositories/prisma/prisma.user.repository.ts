@@ -93,11 +93,15 @@ export class PrismaUserRepository implements IUserRepository {
         },
       });
     } catch (error) {
-      if (
-        error instanceof PrismaClientKnownRequestError &&
-        error.code === 'P2002'
-      ) {
-        throw new BadRequestException('Email or username already in use');
+      if (error instanceof PrismaClientKnownRequestError) {
+        switch (error.code) {
+          case 'P2025':
+            throw new NotFoundException('User not found');
+          case 'P2002':
+            throw new BadRequestException('Email or username already in use');
+          default:
+            break;
+        }
       }
 
       throw error;
