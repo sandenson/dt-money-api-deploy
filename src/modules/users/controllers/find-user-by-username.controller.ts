@@ -9,7 +9,7 @@ export class FindUserByUsernameController {
     private readonly findUserByUsernameService: FindUserByUsernameService,
   ) {}
 
-  @Get(':username')
+  @Get('username/:username')
   findByUsername(@Param('username') username: string) {
     return this.findUserByUsernameService.execute(username);
   }

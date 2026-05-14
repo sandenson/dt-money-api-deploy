@@ -9,7 +9,7 @@ export class FindUserByEmailController {
     private readonly findUserByEmailService: FindUserByEmailService,
   ) {}
 
-  @Get(':email')
+  @Get('email/:email')
   findByEmail(@Param('email') email: string) {
     return this.findUserByEmailService.execute(email);
   }
